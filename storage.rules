@@ -1,0 +1,10 @@
+rules_version = '2';
+service firebase.storage {
+  match /b/{bucket}/o {
+    match /gacha/{userId}/{gachaId}/{imageId} {
+      allow read;
+      allow write: if request.resource.size < 200 * 1024
+                   && userId == request.auth.uid;
+    }
+  }
+}

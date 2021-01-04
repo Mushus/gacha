@@ -1,0 +1,26 @@
+{
+  "compilerOptions": {
+    "outDir": "./dist/",
+    "noImplicitAny": true,
+    "module": "esnext",
+    "target": "esnext",
+    "jsx": "react",
+    "allowJs": false,
+    "strict": true,
+    "moduleResolution": "node",
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    "isolatedModules": true,
+    "sourceMap": true,
+    "lib": [
+      "es2020",
+      "dom",
+      "webworker"
+    ],
+    "baseUrl": "./",
+    "paths": {
+      "@/*" : ["./src/*"]
+    },
+    "types": ["node", "pixi-heaven/dist/pixi-heaven.d.ts"]
+  }
+}
