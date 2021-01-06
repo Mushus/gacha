@@ -67,6 +67,7 @@ const hsvToRgb = (h: number, s: number, v: number) => {
 
 interface Props {
 	randomGacha: () => GachaItem;
+	addPremium: (image: string) => void;
 }
 
 const defaultDrawProp = {
@@ -96,7 +97,7 @@ const defaultDrawProp = {
 	text: 0,
 };
 
-export default ({ randomGacha }: Props) => {
+export default ({ randomGacha, addPremium }: Props) => {
 	const [appMeasureRef, { width, height }] = useMeasure();
 	const appElemRef = useRef<HTMLDivElement>(null);
 	const appRootRef = useMergedRef(appMeasureRef, appElemRef);
@@ -422,6 +423,7 @@ export default ({ randomGacha }: Props) => {
 		}
 		anima.start(animName, () => {
 			setVisibleButton(true);
+			addPremium(image);
 		});
 	};
 

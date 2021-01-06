@@ -42,3 +42,8 @@ export interface SavedGacha {
 	name: string;
 	items: SavedGachaItem[];
 }
+
+export interface GachaPremium {
+	id: string;
+	image: string;
+}

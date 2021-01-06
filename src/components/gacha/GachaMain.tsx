@@ -1,9 +1,10 @@
-import { Gacha, GachaItem } from "@/interfaces";
-import { Box, Button, Text, Image } from "@chakra-ui/react";
+import { Gacha, GachaItem, GachaPremium } from "@/interfaces";
+import { Box, Button, Text } from "@chakra-ui/react";
 import { EditIcon } from "@chakra-ui/icons";
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import GachaGraphics from "./GachaGraphics";
+import PremiumList from "../edit/PremiumList";
 
 interface Props {
 	user: { uid: string } | undefined | null;
@@ -27,6 +28,14 @@ export default ({ user, id, data }: Props) => {
 		return data.items[index];
 	};
 
+	const [premiumList, setPremiumList] = useState<GachaPremium[]>([]);
+
+	const addPremiumList = (image: string) =>
+		setPremiumList((list) => [
+			...list,
+			{ id: String(list.length + 1), image },
+		]);
+
 	return (
 		<>
 			{editable && (
@@ -40,7 +49,11 @@ export default ({ user, id, data }: Props) => {
 				</Box>
 			)}
 			<Box>
-				<GachaGraphics randomGacha={randomGacha} />
+				<PremiumList premiumList={premiumList} />
+				<GachaGraphics
+					randomGacha={randomGacha}
+					addPremium={addPremiumList}
+				/>
 			</Box>
 		</>
 	);
